@@ -4,6 +4,8 @@
   "description": "Smart JSON Schema is a Visual Studio Code extension designed to simplify the generation of JSON schemas from existing JSON files. This tool is perfect for developers working with APIs, configurations, and structured data, allowing them to quickly and efficiently create JSON schemas.",
   "version": "1.0.0",
   "icon": "icon/icon.png",
+  "repository": "https://github.com/reyesmfabian/smart-json-schema",
+  "publisher": "Fabian Reyes",
   "engines": {
     "vscode": "^1.91.0"
   },
