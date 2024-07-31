@@ -1,71 +1,34 @@
-# smart-json-schema README
+# **Smart JSON Schema Generator**
 
-This is the README for your extension "smart-json-schema". After writing up a brief description, we recommend including the following sections.
+**Smart JSON Schema** is a Visual Studio Code extension designed to simplify the generation of JSON schemas from existing JSON files. This tool is perfect for developers working with APIs, configurations, and structured data, allowing them to quickly and efficiently create JSON schemas.
 
-## Features
+## **Features**
 
-Describe specific features of your extension including screenshots of your extension in action. Image paths are relative to this README file.
+* **JSON Schema Generation** : Automatically generates JSON schemas from any selected JSON file.
+* **Custom Configuration** : Allows you to configure the directory where the generated schemas are saved using the **smartJsonSchema.defaultFolder** setting.
+* **Custom File Prefix** : Allows you to configure the prefix for the generated schema files using the **smartJsonSchema.defaultFilePrefix** setting.
+* **Seamless Integration** : Integrates perfectly with Visual Studio Code, providing a smooth and consistent user experience.
+* **Support for Nested Directories** : Automatically creates nested directories specified in the configuration, ensuring that your JSON schemas are saved in the desired structure.
 
-For example if there is an image subfolder under your extension project workspace:
+## **How to Use**
 
-\!\[feature X\]\(images/feature-x.png\)
+1. **Open a Project** : Open your project in Visual Studio Code.
+2. **Run the Command** : Run the **Create JSON Schema** command from the command palette (Ctrl+Shift+P or Cmd+Shift+P) to open a JSON file.
+3. **Select the JSON File** : Select the JSON file from which you want to generate a schema.
+4. **Save the Schema** : The generated JSON schema will be automatically saved in the configured directory (default is **schemas**), with the specified prefix followed by the original file name.
 
-> Tip: Many popular extensions utilize animations. This is an excellent way to show off your extension! We recommend short, focused animations that are easy to follow.
+## **Configuration**
 
-## Requirements
+To configure the directory where the generated schemas are saved and the prefix for the schema files, add the following settings to your **settings.json**:
 
-If you have any requirements or dependencies, add a section describing those and how to install and configure them.
+```json
+{
+  "smartJsonSchema.defaultFolder": "path/to/your/directory",
+  "smartJsonSchema.defaultFilePrefix": "your-prefix-"
+}
+```
 
-## Extension Settings
+## **Usage Example**
 
-Include if your extension adds any VS Code settings through the `contributes.configuration` extension point.
-
-For example:
-
-This extension contributes the following settings:
-
-* `myExtension.enable`: Enable/disable this extension.
-* `myExtension.thing`: Set to `blah` to do something.
-
-## Known Issues
-
-Calling out known issues can help limit users opening duplicate issues against your extension.
-
-## Release Notes
-
-Users appreciate release notes as you update your extension.
-
-### 1.0.0
-
-Initial release of ...
-
-### 1.0.1
-
-Fixed issue #.
-
-### 1.1.0
-
-Added features X, Y, and Z.
-
----
-
-## Following extension guidelines
-
-Ensure that you've read through the extensions guidelines and follow the best practices for creating your extension.
-
-* [Extension Guidelines](https://code.visualstudio.com/api/references/extension-guidelines)
-
-## Working with Markdown
-
-You can author your README using Visual Studio Code. Here are some useful editor keyboard shortcuts:
-
-* Split the editor (`Cmd+\` on macOS or `Ctrl+\` on Windows and Linux).
-* Toggle preview (`Shift+Cmd+V` on macOS or `Shift+Ctrl+V` on Windows and Linux).
-* Press `Ctrl+Space` (Windows, Linux, macOS) to see a list of Markdown snippets.
-
-## For more information
-
-* [Visual Studio Code's Markdown Support](http://code.visualstudio.com/docs/languages/markdown)
-* [Markdown Syntax Reference](https://help.github.com/articles/markdown-basics/)
-
-**Enjoy!**
+* **If you set smartJsonSchema.defaultFolder** to **schemas**, the generated schemas will be saved in the **[project_path]/schemas/** directory.**
+* ****If you set smartJsonSchema.defaultFilePrefix** to **schema-**, the generated files will be named like **schema-originalfilename.json**.**

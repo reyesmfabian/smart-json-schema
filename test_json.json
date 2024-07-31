@@ -1,0 +1,29 @@
+{
+    "name": "John Doe",
+    "age": 30,
+    "email": "john.doe@example.com",
+    "address": {
+      "street": "123 Main St",
+      "city": "Anytown",
+      "state": "CA",
+      "postalCode": "12345"
+    },
+    "phoneNumbers": [
+      {
+        "type": "home",
+        "number": "555-555-5555"
+      },
+      {
+        "type": "work",
+        "number": "555-555-5556"
+      }
+    ],
+    "preferences": {
+      "newsletter": true,
+      "notifications": {
+        "email": true,
+        "sms": false
+      }
+    },
+    "registrationDate": "2021-01-01T00:00:00Z"
+  }
