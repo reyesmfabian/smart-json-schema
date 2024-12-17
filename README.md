@@ -12,10 +12,19 @@
 
 ## **How to Use**
 
+### Command Palette
+
 1. **Open a Project** : Open your project in Visual Studio Code.
 2. **Run the Command** : Run the **Create JSON Schema** command from the command palette (Ctrl+Shift+P or Cmd+Shift+P) to open a JSON file.
 3. **Select the JSON File** : Select the JSON file from which you want to generate a schema.
 4. **Save the Schema** : The generated JSON schema will be automatically saved in the configured directory (default is **schemas**), with the specified prefix followed by the original file name.
+
+### Contextual Menu
+
+1. **Open a Project** : Open your project in Visual Studio Code.
+2. **Select the JSON File** : Select the JSON file from which you want to generate a schema.
+3. **Generate the Schema:** Right click on the JSON file and select the **Create JSON Schema Here command.**
+4. **Final:** The schema file will be generated together with the original JSON file.
 
 ## **Configuration**
 

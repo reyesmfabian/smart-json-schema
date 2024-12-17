@@ -65,7 +65,6 @@ export function activate(context: vscode.ExtensionContext) {
       return;
     }
 
-    // Remove trailing slash or backslash if present
     saveDirectory = saveDirectory.replace(/[/\\]$/, "");
 
     const fullSavePath = path.join(workspacePath, saveDirectory);
@@ -89,6 +88,60 @@ export function activate(context: vscode.ExtensionContext) {
   });
 
   context.subscriptions.push(disposable);
+
+  let disposableContextMenu = vscode.commands.registerCommand("smart-json-schema.create-json-schema-here", async (uri: vscode.Uri) => {
+    const workspaceFolders = vscode.workspace.workspaceFolders;
+    if (!workspaceFolders) {
+      vscode.window.showErrorMessage("No workspace is open.");
+      return;
+    }
+
+    let fileContent: string;
+    try {
+      fileContent = fs.readFileSync(uri.fsPath, "utf8");
+    } catch (err) {
+      vscode.window.showErrorMessage("Error reading the file.");
+      console.error(err);
+      return;
+    }
+
+    let json: any;
+    try {
+      json = JSON.parse(fileContent);
+    } catch (err) {
+      vscode.window.showErrorMessage("Error parsing JSON content.");
+      console.error(err);
+      return;
+    }
+
+    let schema: any;
+    try {
+      schema = jsonSchemaGenerator(json);
+    } catch (err) {
+      vscode.window.showErrorMessage("Error generating JSON schema.");
+      console.error(err);
+      return;
+    }
+
+    const baseDir = path.dirname(uri.fsPath);
+    const originalFileName = path.basename(uri.fsPath);
+
+    const config = vscode.workspace.getConfiguration("smartJsonSchema");
+    let filePrefix = config.get<string>("defaultFilePrefix", "");
+
+    const newFileName = `${filePrefix}${originalFileName}`;
+    const newFilePath = path.join(baseDir, newFileName);
+
+    try {
+      fs.writeFileSync(newFilePath, JSON.stringify(schema, null, 2), "utf8");
+      vscode.window.showInformationMessage(`Schema saved as: ${newFilePath}`);
+    } catch (err) {
+      vscode.window.showErrorMessage("Error writing schema to file.");
+      console.error(err);
+    }
+  });
+
+  context.subscriptions.push(disposableContextMenu);
 }
 
 export function deactivate() {}
